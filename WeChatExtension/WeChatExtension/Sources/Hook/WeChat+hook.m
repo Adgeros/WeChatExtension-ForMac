@@ -2,8 +2,8 @@
 //  WeChat+hook.m
 //  WeChatExtension
 //
-//  Created by WeChatExtension on 2017/4/19.
-//  Copyright © 2017年 WeChatExtension. All rights reserved.
+//  Created by WeChatExtension on 2019/4/19.
+//  Copyright © 2019年 WeChatExtension. All rights reserved.
 //
 
 #import "WeChat+hook.h"
@@ -26,6 +26,7 @@
 #import<CommonCrypto/CommonDigest.h>
 #import "YMIMContactsManager.h"
 #import "ANYMethodLog.h"
+#import "NSViewLayoutTool.h"
 
 @implementation NSObject (WeChatHook)
 
@@ -105,7 +106,7 @@
     }, 2);
     
     [self setup];
-    
+
 }
 
 - (void)hook_addChatMemberNeedVerifyMsg:(id)arg1 ContactList:(id)arg2
