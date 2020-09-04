@@ -8,15 +8,16 @@
 
 #import "YMFuzzyManager.h"
 #import "YMThemeManager.h"
-#import "TKWeChatPluginConfig.h"
+#import "YMWeChatPluginConfig.h"
 #import "NSViewLayoutTool.h"
 
 @implementation YMFuzzyManager
 + (void)fuzzyWindowViewController:(NSWindowController *)window
 {
-    if (!TKWeChatPluginConfig.sharedConfig.fuzzyMode) {
+    if (!YMWeChatPluginConfig.sharedConfig.fuzzyMode) {
         return;
     }
+    
     
     //窗口高斯模式
     //视频通话不适配
@@ -60,7 +61,7 @@
 
 + (void)fuzzyViewController:(NSViewController *)viewController
 {
-    if (!TKWeChatPluginConfig.sharedConfig.fuzzyMode) {
+    if (!YMWeChatPluginConfig.sharedConfig.fuzzyMode) {
         return;
     }
     
@@ -69,7 +70,10 @@
         return;
     }
     
-    if ([viewController isKindOfClass:objc_getClass("MMChatCollectionViewController")] || [viewController isKindOfClass:objc_getClass("MMSessionListView")] || [viewController isKindOfClass:objc_getClass("MMStickerCollectionViewController")] || [viewController isKindOfClass:objc_getClass("MMContactProfileController")]) {
+    if ([viewController isKindOfClass:objc_getClass("MMChatCollectionViewController")]
+        || [viewController isKindOfClass:objc_getClass("MMSessionListView")]
+        || [viewController isKindOfClass:objc_getClass("MMStickerCollectionViewController")]
+        || [viewController isKindOfClass:objc_getClass("MMContactProfileController")]) {
         NSVisualEffectView *effView = [YMThemeManager creatFuzzyEffectView:viewController.view];
         if (viewController.view.subviews.count > 0) {
             NSView *firstSubView = viewController.view.subviews[0];
